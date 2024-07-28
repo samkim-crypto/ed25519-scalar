@@ -1,0 +1,21 @@
+{
+    "extends": "@paulmillr/jsbt/tsconfigs/esm.json",
+    "compilerOptions": {
+        "outDir": ".",
+        "sourceMap": false
+    },
+    "include": [
+        "index.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "lib"
+    ],
+    "dependencies": {
+        "@noble/ed25519": "2.1.0"
+    },
+    "devDependencies": {
+        "micro-should": "0.4.0",
+        "typescript": "^5.5.3"
+    }
+}
