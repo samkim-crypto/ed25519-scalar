@@ -8,7 +8,7 @@ representation of an ed25519 private key.
 
 The ed25519 signature scheme is an instantiation of the
 [EDDSA](https://en.wikipedia.org/wiki/EdDSA) (specified in
-[RFC8032](https://datatracker.ietf.org/doc/html/rfc8032), which itself is an
+[RFC8032](https://datatracker.ietf.org/doc/html/rfc8032)), which itself is an
 instantiation of the
 [Schnorr signature](https://en.wikipedia.org/wiki/Schnorr_signature) scheme.
 In the traditional Schnorr signature scheme, a private key is defined as a
