@@ -46,7 +46,7 @@ type Sha512FnSync = undefined | ((...messages: Bytes[]) => Bytes);
 let _shaS: Sha512FnSync;
 const sha512a = (...m: Bytes[]) => etc.sha512Async(...m);  // Async SHA512
 const sha512s = (...m: Bytes[]) =>                      // Sync SHA512, not set by default
-    typeof _shaS === 'function' ? _shaS(...m) : err('etc.sha512Sync not set');
+    typeof _shaS === 'function' ? _shaS(...m) : err('sha512Sync not set');
 
 function hashFinish<T>(asynchronous: true, res: Finishable<T>): Promise<T>;
 function hashFinish<T>(asynchronous: false, res: Finishable<T>): T;
@@ -79,6 +79,15 @@ const sign = (msg: Hex, privKey: Hex): Bytes => {
     return hashFinish(false, _sign(e, rBytes, m));        // gen R, k, S, then 64-byte signature
 };
 
+const sha = {
+    sha512Sync: undefined as Sha512FnSync,                // Actual logic below
+};
+Object.defineProperties(sha, {
+    sha512Sync: {  // Allow setting it once. Next sets will be ignored
+        configurable: false, get() { return _shaS; }, set(f) { if (!_shaS) _shaS = f; },
+    }
+});
+
 export {
-    getPublicKey, getPublicKeyAsync, sign, signAsync
+    getPublicKey, getPublicKeyAsync, sign, signAsync, sha
 }

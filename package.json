@@ -1,5 +1,6 @@
 {
     "extends": "@paulmillr/jsbt/tsconfigs/esm.json",
+    "type": "module",
     "compilerOptions": {
         "outDir": ".",
         "sourceMap": false
@@ -16,6 +17,7 @@
     },
     "devDependencies": {
         "micro-should": "0.4.0",
-        "typescript": "^5.5.3"
+        "typescript": "^5.5.3",
+        "@noble/hashes": "1.4.0"
     }
 }
